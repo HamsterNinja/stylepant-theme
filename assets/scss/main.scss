@@ -193,7 +193,26 @@ nav.woocommerce-breadcrumb a {
     margin-bottom: 35px;
     padding-left: 20px;
 }
-
+.single-product-top {
+    display: grid;
+    grid-template-columns: calc(48% - 20px) calc(52% - 20px);
+    grid-gap: 40px;
+    padding-bottom: 50px;
+}
+.product-info-top p {
+    font-size: 14px;
+    color: #171717;
+    margin: 0 0 10px 0;
+}
+.product-info-middle {
+    background-color: #f3f3f3;
+    padding: 18px 12px 8px 12px;
+}
+.product-info-middle p{
+    font-size: 14px;
+    color: #171717;
+    margin: 0 0 10px 0;
+}
 @import 'pages/home';
 @import 'components/buttons';
 @import 'layout/header';
