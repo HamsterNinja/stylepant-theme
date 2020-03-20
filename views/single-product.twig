@@ -1,0 +1,104 @@
+{% include "partials/header.twig" %}
+<main class='main-content'>
+	<div class="archive-product-block">
+		<div class="container">
+			<div class="archive-product-sidebar">
+				<div class="sidebar-menu-item">
+					<div class="sidebar-menu-item-name">Нижнее белье</div>
+					<ul class="sidebar-menu-content">
+						<li><a href="">Бюсгалтеры</a></li>
+						<li class="current-menu-item"><a href="">Трусики</a></li>
+						<li><a href="">Боди, грации, корсеты</a></li>
+						<li><a href="">Корректирующее белье</a></li>
+					</ul>
+				</div>
+				<div class="sidebar-menu-item">
+					<div class="sidebar-menu-item-name">Одежда для сна и отдыха</div>
+					<ul class="sidebar-menu-content">
+						<li><a href="">Пижамы и сорочки</a></li>
+						<li><a href="">Халаты</a></li>
+						<li><a href="">Боди</a></li>
+					</ul>
+				</div>
+				<div class="sidebar-menu-item">
+					<div class="sidebar-menu-item-name">Пляж</div>
+					<ul class="sidebar-menu-content">
+						<li><a href="">Раздельные купальники</a></li>
+						<li><a href="">Слитные купальники</a></li>
+						<li><a href="">Пляжная одежда</a></li>
+					</ul>
+				</div>
+				<div class="sidebar-menu-item">
+					<div class="sidebar-menu-item-name">Аксессуары</div>
+					<ul class="sidebar-menu-content">
+						<li><a href="">Аксессуары для белья</a></li>
+						<li><a href="">Колготки</a></li>
+						<li><a href="">Подвязки</a></li>
+						<li><a href="">Чулки и пояса</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="archive-products-main">
+				<nav class="woocommerce-breadcrumb"><a href="">Главная</a>&nbsp;/&nbsp;<a href="">Каталог</a>&nbsp;/&nbsp;<a href="">Трусики</a>&nbsp;/&nbsp;Трусы 311</nav>
+				<div class="all-page-title">
+					<h1>Трусы 311</h1>
+				</div>
+				<div class="single-product-top">
+					<div class="product-image">
+						<img data-zoom="./assets/images/product.jpg" class="product-gallery__item" src="./assets/images/product.jpg" alt="">
+					</div>
+					<div class="product-info">
+						<div class="product-info-top">
+							<p>Бренд:  EUROBRA</p>
+							<p>Товар:  ТРУСЫ 311</p>
+						</div>
+						<div class="product-info-middle">
+							<p>Покрой:  Пуш Ап Поролон</p>
+							<p>Страна производитель:  Латвия</p>
+							<p>Производитель:  STEFI-L</p>
+							<p>Вид бретелек:  несъемные</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="single-product-bottom">
+					<div class="single-product-bottom-slider">
+						<div class="single-product-bottom-slider-name">Ещё из коллекции</div>
+						<div class="popular-slick">
+							{% for item in 0..10 %}
+							<div class="popular-slick-content">
+								<a class="products-item-link" href="">
+									<div class="products-item-image">
+										<img src="./assets/images/prod-thmb.jpg" alt="">
+										<div class="sale-tag">15%</div>
+									</div>
+									<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
+									<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+								</a>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="single-product-bottom-slider">
+						<div class="single-product-bottom-slider-name">Вы смотрели</div>
+						<div class="popular-slick">
+							{% for item in 0..10 %}
+							<div class="popular-slick-content">
+								<a class="products-item-link" href="">
+									<div class="products-item-image">
+										<img src="./assets/images/prod-thmb.jpg" alt="">
+										<div class="sale-tag">15%</div>
+									</div>
+									<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
+									<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+								</a>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% include "partials/footer.twig" %}

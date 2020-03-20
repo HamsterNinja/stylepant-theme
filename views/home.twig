@@ -1,7 +1,148 @@
 {% include "partials/header.twig" %}
 <main class='main-content' id="app">
-<h1>1</h1>
-
-
+<div class="main-page-slider">
+	<div class="main-banner-slick">
+		{% for item in 0..2 %}
+		<div class="main-banner-slick-content">
+			<img src="./assets/images/banner.jpg" alt="">
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<div class="main-page-categories">
+	<a class="cat-link" href="" style="background-color: #94d6cd; background-image: url(./assets/images/cat-1.jpg);">
+		<div class="hidden-link">Корсеты</div>
+	</a>
+	<a class="cat-link" href="" style="background-color: #f3a9b8; background-image: url(./assets/images/cat-2.jpg);">
+		<div class="hidden-link">Корсеты</div>
+	</a>
+	<a class="cat-link" href="" style="background-color: #272435; background-image: url(./assets/images/cat-3.jpg);">
+		<div class="hidden-link">Корсеты</div>
+	</a>
+</div>
+<div class="partners-slider">
+	<div class="container">
+		<div class="partners-slick">
+			{% for item in 0..10 %}
+			<div class="partners-slick-content">
+				<img src="./assets/images/partner.jpg" alt="">
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="main-page-products">
+	<div class="container">
+		<div class="main-page-products-buttons">
+			<div class="choice-button active" data-id="p1">Новинки</div>
+			<div class="choice-button" data-id="p2">Выбор покупательниц</div>
+		</div>
+		<div class="main-page-products-content">
+			<div class="main-page-products-content-inner visible" id="p1">
+				<div class="products-slick">
+					{% for item in 0..10 %}
+					<div class="products-slick-content">
+						<a class="products-item-link" href="">
+							<div class="products-item-image">
+								<img src="./assets/images/prod-thmb.jpg" alt="">
+								<div class="sale-tag">15%</div>
+							</div>
+							<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
+							<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="main-page-products-content-inner" id="p2">
+				<div class="products-slick">
+					{% for item in 0..10 %}
+					<div class="products-slick-content">
+						<a class="products-item-link" href="">
+							<div class="products-item-image">
+								<img src="./assets/images/prod-thmb.jpg" alt="">
+								<div class="sale-tag">15%</div>
+							</div>
+							<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
+							<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main-page-triggers">
+	<div class="container-2">
+		<div class="main-page-triggers-title">
+			<h2>НИЖНЕЕ БЕЛЬЕ ОПТОМ БОЛЬШИХ РАЗМЕРОВ</h2>
+		</div>
+		<div class="main-page-triggers-content">
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-1.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">АССОРТИМЕНТ</div>
+					<div class="main-page-triggers-item-text">Любые размеры от 70А до 120J</div>
+				</div>
+			</div>
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-2.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">ЭКСПЕРТНОСТЬ</div>
+					<div class="main-page-triggers-item-text">30 лет в индустрии</div>
+				</div>
+			</div>
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-3.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">ОПЕРАТИВНОСТЬ</div>
+					<div class="main-page-triggers-item-text">Собственный склад</div>
+				</div>
+			</div>
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-4.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">КАЧЕСТВО</div>
+					<div class="main-page-triggers-item-text">Любые размеры от 70А до 120J</div>
+				</div>
+			</div>
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-5.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">ЗАБОТА</div>
+					<div class="main-page-triggers-item-text">30 лет в индустрии</div>
+				</div>
+			</div>
+			<div class="main-page-triggers-item">
+				<div class="main-page-triggers-item-img"><img src="./assets/images/trigger-6.png" alt=""></div>
+				<div class="main-page-triggers-item-info">
+					<div class="main-page-triggers-item-name">СКИДКИ И АКЦИИ</div>
+					<div class="main-page-triggers-item-text">Собственный склад</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main-page-seo">
+	<div class="container-2">
+		<div class="main-page-seo-title"><h1>Нижнее белье оптом</h1></div>
+		<div class="main-page-seo-text">
+			<p>Красивое и качественное нижнее белье —важная деталь гардероба, которая пользуется постоянным спросом у людей любого пола, возраста и размера. Покупка мужского и женского нижнего белья оптом —отличная возможность начать перспективный бизнес или расширить ассортимент существующего магазина одежды.</p>
+			<p>Компания «Стиль и Шарм» уже 28 лет представлена на рынке нижнего белья, сотрудничает с популярными латвийскими брендами и предлагает купить стильные модели по выгодным ценам. Комфортные и красивые трусы и бюстгальтеры наверняка понравится покупателям, так что клиенты будут возвращаться в Ваш магазин снова и снова.</p>
+		</div>
+	</div>
+</div>
+<div class="bottom-subscribe">
+	<div class="container-2">
+		<div class="bottom-subscribe-text">Узнавай первым о новых коллекциях, скидках и акциях</div>
+		<div class="bottom-subscribe-form">
+			<form action="">
+				<input type="email" class="subs-input" placeholder="Введите ваш E-mail">
+                <input type="submit" class="subs-submit" value="ПОДПИСАТЬСЯ">
+			</form>
+		</div>
+	</div>
+</div>
 </main>
 {% include "partials/footer.twig" %}

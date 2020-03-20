@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f87cb256b2c38b769680"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3bca3ec3bad1df3d59f8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -700,7 +700,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "C:\\Users\\Андрей\\Downloads\\start-template\\assets";
+/******/ 	__webpack_require__.p = "C:\\xampp\\htdocs\\stylepant-theme\\assets";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -907,9 +907,66 @@ module.exports = Html5Entities;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-console.log('w5');
+"use strict";
+
+
+$(document).ready(function () {
+    $('.btn-hamburger').click(function (e) {
+        $(this).toggleClass('active');
+        $(this).parent().toggleClass('active');
+        $('.hidden-menu_block').toggleClass('active');
+        $('.overlay').toggleClass('active');
+    });
+    $('.overlay').click(function (e) {
+        $(this).removeClass('active');
+        $('.btn-hamburger').removeClass('active');
+        $('.btn-hamburger').parent().removeClass('active');
+        $('.hidden-menu_block').removeClass('active');
+    });
+
+    $('.main-banner-slick').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false
+    });
+    $('.partners-slick').slick({
+        infinite: true,
+        slidesToShow: 7,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false
+    });
+    $('.products-slick').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        arrows: true,
+        dots: false
+    });
+    $('.popular-slick').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        arrows: true,
+        dots: false
+    });
+    $('.choice-button').click(function (event) {
+        event.preventDefault();
+        $('.choice-button').removeClass('active');
+        $(this).addClass('active');
+
+        var id = $(this).attr('data-id');
+        if (id) {
+
+            $('.main-page-products-content-inner:visible').removeClass('visible');
+            $('.main-page-products-content').find('#' + id).addClass('visible');
+        }
+    });
+});
 
 /***/ }),
 /* 2 */

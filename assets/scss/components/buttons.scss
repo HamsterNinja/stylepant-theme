@@ -1,0 +1,66 @@
+.main-banner-slick .slick-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-banner-slick .slick-arrow svg {
+    width: 16px;
+    height: 28px;
+}
+.main-banner-slick .slick-prev,
+.main-banner-slick .slick-next{
+    position: absolute;
+    display: block;
+    height: 60px;
+    width: 80px;
+}
+.main-banner-slick .slick-prev:hover svg path, .main-banner-slick .slick-next:hover svg path {
+    fill: #f3a9b8;
+}
+.main-banner-slick .slick-prev{
+    text-align: right;
+    padding-right: 13px;
+}
+.main-banner-slick .slick-next {
+    text-align: left;;
+    padding-left: 13px;
+}
+.products-slick .slick-prev, .products-slick .slick-next,
+.partners-slick .slick-prev, .partners-slick .slick-next {
+    height: 40px;
+    width: 40px;
+}
+
+.products-slick .slick-arrow svg,
+.partners-slick .slick-arrow svg {
+    width: 26px;
+    height: 26px;
+}
+.products-slick .slick-prev,
+.partners-slick .slick-prev {
+    left: -70px;
+}
+.products-slick .slick-next,
+.partners-slick .slick-next{
+    right: -70px;
+}
+.popular-slick .slick-prev svg path, .popular-slick .slick-next svg path,
+.products-slick .slick-prev svg path, .products-slick .slick-next svg path,
+.partners-slick .slick-prev svg path, .partners-slick .slick-next svg path{
+    fill: #000;
+}
+.popular-slick .slick-prev:hover svg path, .popular-slick .slick-next:hover svg path,
+.products-slick .slick-prev:hover svg path, .products-slick .slick-next:hover svg path,
+.partners-slick .slick-prev:hover svg path, .partners-slick .slick-next:hover svg path {
+    fill: #f3a9b8;
+}
+
+.popular-slick .slick-prev, .popular-slick .slick-next,
+.popular-slick .slick-arrow svg{
+    width: 18px;
+    height: 18px;
+}
+.popular-slick .slick-prev{
+    left: -3px;
+}
+.popular-slick .slick-next{
+    right: -3px;
+}
