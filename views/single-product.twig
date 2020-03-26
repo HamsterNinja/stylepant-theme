@@ -72,7 +72,7 @@
 									<div class="add-to-cart-column">(( variation.value ))</div>
 									<div class="add-to-cart-column">(( variation.label ))</div>
 									<div class="add-to-cart-column">(( variation.stock_quantity ))</div>
-									<div class="add-to-cart-column"><quantity-button class="product-quantity" count='1'></quantity-button></div>
+									<div class="add-to-cart-column"><quantity-button class="product-quantity" count='1' :max-count="variation.stock_quantity"></quantity-button></div>
 									<div class="add-to-cart-column"><a class="add-to-cart" href="">В корзину</a></div>
 								</div>		
 							</div>

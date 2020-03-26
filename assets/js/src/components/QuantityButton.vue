@@ -3,7 +3,7 @@
         <button class="decrease-button" @click.prevent="decrementProduct">
             <svg width="10" height="2" viewBox="0 0 15 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1h13.5" stroke="#000"/></svg>
         </button>
-        <input class="inputNumber" type="number" min="1" :value="countComponent" @change="updateValue">
+        <input class="inputNumber" type="number" min="1" :max="maxCount"  :value="countComponent" @change="updateValue">
         <button class="increase-button" @click.prevent="incrementProduct">
             <svg width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 7h13.5M7 0v13.5" stroke="#000"/></svg>
         </button>
@@ -17,6 +17,10 @@ export default {
         cart_id: {
             type: Number | String,
         },
+        maxCount: {
+            type: [Number, String],
+            default: 100000
+        },
         count: {
             type: Number | String,
             default: 1
@@ -28,8 +32,11 @@ export default {
         };
     },
     methods: {
+
         incrementProduct() {
-            this.countComponent++;
+            if (this.maxCount > this.countComponent) {
+                this.countComponent++;
+            }
             this.updateValue();
         },
         decrementProduct() {
