@@ -253,7 +253,9 @@ input.search-button {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
+.hidden-menu_block-item ul {
+    list-style: none;
+}
 .hidden-menu_block-item ul li{
     margin-bottom: 14px;
 }

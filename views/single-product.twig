@@ -45,7 +45,7 @@
 				</div>
 				<div class="single-product-top">
 					<div class="product-image">
-						<img data-zoom="./assets/images/product.jpg" class="product-gallery__item" src="./assets/images/product.jpg" alt="">
+						<img data-zoom="{{ site.theme.link }}/assets/images/product.jpg" class="product-gallery__item" src="{{ site.theme.link }}/assets/images/product.jpg" alt="">
 					</div>
 					<div class="product-info">
 						<div class="product-info-top">
@@ -58,6 +58,26 @@
 							<p>Производитель:  STEFI-L</p>
 							<p>Вид бретелек:  несъемные</p>
 						</div>
+						<div class="product-info-bottom">
+							{% if product_variations %}
+							<div class="add-to-cart-table">
+								<div class="add-to-cart-header">
+									<div class="add-to-cart-column">Цвет</div>
+									<div class="add-to-cart-column">Размер</div>
+									<div class="add-to-cart-column">В наличии</div>
+									<div class="add-to-cart-column">Количество</div>
+									<div class="add-to-cart-column"></div>
+								</div>
+								<div class="add-to-cart-row" v-for="variation in productVariations">
+									<div class="add-to-cart-column">(( variation.value ))</div>
+									<div class="add-to-cart-column">(( variation.label ))</div>
+									<div class="add-to-cart-column">(( variation.stock_quantity ))</div>
+									<div class="add-to-cart-column"><quantity-button class="product-quantity" count='1'></quantity-button></div>
+									<div class="add-to-cart-column"><a class="add-to-cart" href="">В корзину</a></div>
+								</div>		
+							</div>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 
@@ -67,13 +87,13 @@
 						<div class="popular-slick">
 							{% for item in 0..10 %}
 							<div class="popular-slick-content">
-								<a class="products-item-link" href="">
+								<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
 									<div class="products-item-image">
-										<img src="./assets/images/prod-thmb.jpg" alt="">
+										<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
 										<div class="sale-tag">15%</div>
 									</div>
 									<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-									<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+									<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
 								</a>
 							</div>
 							{% endfor %}
@@ -84,13 +104,13 @@
 						<div class="popular-slick">
 							{% for item in 0..10 %}
 							<div class="popular-slick-content">
-								<a class="products-item-link" href="">
+								<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
 									<div class="products-item-image">
-										<img src="./assets/images/prod-thmb.jpg" alt="">
+										<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
 										<div class="sale-tag">15%</div>
 									</div>
 									<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-									<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+									<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
 								</a>
 							</div>
 							{% endfor %}

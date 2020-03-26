@@ -2,26 +2,61 @@
 <html>
 
 <head>
-    <title>Document</title>
+    <meta charset="{{ site.charset }}" />
+    <title>
+        {% if wp_title %}
+        {{ wp_title }} - {{ site.name }}
+        {% else %}
+        {{ site.name }}
+        {% endif %}
+    </title>
+    <!-- favicon start -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ site.theme.link }}/assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ site.theme.link }}/assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ site.theme.link }}/assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ site.theme.link }}/assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="{{ site.theme.link }}/assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="{{ site.theme.link }}/assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="{{ site.theme.link }}/assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="{{ site.theme.link }}/assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ site.theme.link }}/assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{{ site.theme.link }}/assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ site.theme.link }}/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="{{ site.theme.link }}/assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ site.theme.link }}/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ site.theme.link }}/assets/images/favicon/manifest.json">
+    <link rel="shortcut icon" href="{{ site.theme.link }}/assets/images/favicon/favicon.ico">
+    <!-- favicon end -->
+    <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-    <link href="./assets/css/main.css" rel="stylesheet" type="text/css">
+    {{function('wp_head')}}
 </head>
 
-<body>
+<body class="{{body_class}}">
+    <div id="app">
     <header class="main-header">
      <div class="main-header-top">
         <div class="container">
          	<div class="main-header-left">
          		<button class="btn-hamburger btn-hamburger-1 js_hamburger"><span></span></button>
-         		<div class="main-header-whatsapp"><a href=""><img src="./assets/images/whatsapp.png" alt=""></a></div>
-         		<div class="main-header-viber"><a href=""><img src="./assets/images/viber.png" alt=""></a></div>
+         		<div class="main-header-whatsapp"><a href=""><img src="{{ site.theme.link }}/assets/images/whatsapp.png" alt=""></a></div>
+         		<div class="main-header-viber"><a href=""><img src="{{ site.theme.link }}/assets/images/viber.png" alt=""></a></div>
          		<div class="main-header-phone"><a href="">+7 (495) 633 72 90</a></div>
-         		<div class="main-header-email"><a href=""><img src="./assets/images/email.png" alt=""></a></div>
+         		<div class="main-header-email"><a href=""><img src="{{ site.theme.link }}/assets/images/email.png" alt=""></a></div>
          	</div>
-         	<div class="main-header-logo"><a href=""><img src="./assets/images/logo.png" alt=""></a></div>
+         	<div class="main-header-logo"><a href="{{ site.link }}"><img src="{{ site.theme.link }}/assets/images/logo.png" alt=""></a></div>
          	<div class="main-header-right">
          		<div class="main-header-search">
          			<form role="search" method="get" action="{{ site.link }}" class="searchform group">
@@ -30,21 +65,21 @@
     				</form>
          		</div>
          		<div class="main-header-user">
-         			<a href=""><img src="./assets/images/user.png" alt=""></a>
+         			<a href="{{ site.link }}/my-account"><img src="{{ site.theme.link }}/assets/images/user.png" alt=""></a>
          		</div>
-         		<div class="main-header-cart"><a href=""><img src="./assets/images/cart.png" alt=""><span class="cart-quant">3</span></a></div>
+                {% do action('header_action') %}
          	</div>
         </div>
      </div>
      <div class="main-header-bottom">
      	<div class="main-header-menu">
      		<ul>
-     			<li><a href="">БРЕНДЫ</a></li>
-     			<li><a href="">НИЖНЕЕ БЕЛЬЕ</a></li>
-     			<li><a href="">ОДЕЖДА ДЛЯ СНА И ОТДЫХА</a></li>
-     			<li><a href="">КУПАЛЬНИКИ</a></li>
-     			<li><a href="">АКСЕССУАРЫ</a></li>
-     			<li><a href="">ПОДБОР РАЗМЕРА</a></li>
+     			<li><a href="{{ site.link }}/shop">БРЕНДЫ</a></li>
+     			<li><a href="{{ site.link }}/shop">НИЖНЕЕ БЕЛЬЕ</a></li>
+     			<li><a href="{{ site.link }}/shop">ОДЕЖДА ДЛЯ СНА И ОТДЫХА</a></li>
+     			<li><a href="{{ site.link }}/shop">КУПАЛЬНИКИ</a></li>
+     			<li><a href="{{ site.link }}/shop">АКСЕССУАРЫ</a></li>
+     			<li><a href="{{ site.link }}/shop">ПОДБОР РАЗМЕРА</a></li>
      		</ul>
      	</div>
      </div>

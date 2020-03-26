@@ -1,0 +1,16 @@
+{% if posts.pagination.pages is not empty %}
+<div class="pagintation_block">
+    <nav class="navigation pagination" role="navigation">
+        <h2 class="screen-reader-text"> </h2>
+        <div class="nav-links">
+            {% for page in pagination.pages %}
+                {% if page.link %}
+                    <a class="page-numbers" href="{{ page.link }}"><span>{{ page.title }}</span></a>
+                {% else %}
+                    <span aria-current="page" class="page-numbers current"><span>{{ page.title }}</span></span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </nav>
+</div>
+{% endif %}

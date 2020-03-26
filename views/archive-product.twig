@@ -6,53 +6,135 @@
 				<div class="sidebar-menu-item">
 					<div class="sidebar-menu-item-name">Нижнее белье</div>
 					<ul class="sidebar-menu-content">
-						<li><a href="">Бюсгалтеры</a></li>
-						<li class="current-menu-item"><a href="">Трусики</a></li>
-						<li><a href="">Боди, грации, корсеты</a></li>
-						<li><a href="">Корректирующее белье</a></li>
+						<li><a href="{{ site.link }}/shop">Бюсгалтеры</a></li>
+						<li class="current-menu-item"><a href="{{ site.link }}/shop">Трусики</a></li>
+						<li><a href="{{ site.link }}/shop">Боди, грации, корсеты</a></li>
+						<li><a href="{{ site.link }}/shop">Корректирующее белье</a></li>
 					</ul>
 				</div>
 				<div class="sidebar-menu-item">
 					<div class="sidebar-menu-item-name">Одежда для сна и отдыха</div>
 					<ul class="sidebar-menu-content">
-						<li><a href="">Пижамы и сорочки</a></li>
-						<li><a href="">Халаты</a></li>
-						<li><a href="">Боди</a></li>
+						<li><a href="{{ site.link }}/shop">Пижамы и сорочки</a></li>
+						<li><a href="{{ site.link }}/shop">Халаты</a></li>
+						<li><a href="{{ site.link }}/shop">Боди</a></li>
 					</ul>
 				</div>
 				<div class="sidebar-menu-item">
 					<div class="sidebar-menu-item-name">Пляж</div>
 					<ul class="sidebar-menu-content">
-						<li><a href="">Раздельные купальники</a></li>
-						<li><a href="">Слитные купальники</a></li>
-						<li><a href="">Пляжная одежда</a></li>
+						<li><a href="{{ site.link }}/shop">Раздельные купальники</a></li>
+						<li><a href="{{ site.link }}/shop">Слитные купальники</a></li>
+						<li><a href="{{ site.link }}/shop">Пляжная одежда</a></li>
 					</ul>
 				</div>
 				<div class="sidebar-menu-item">
 					<div class="sidebar-menu-item-name">Аксессуары</div>
 					<ul class="sidebar-menu-content">
-						<li><a href="">Аксессуары для белья</a></li>
-						<li><a href="">Колготки</a></li>
-						<li><a href="">Подвязки</a></li>
-						<li><a href="">Чулки и пояса</a></li>
+						<li><a href="{{ site.link }}/shop">Аксессуары для белья</a></li>
+						<li><a href="{{ site.link }}/shop">Колготки</a></li>
+						<li><a href="{{ site.link }}/shop">Подвязки</a></li>
+						<li><a href="{{ site.link }}/shop">Чулки и пояса</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="archive-products-main">
-				<nav class="woocommerce-breadcrumb"><a href="">Главная</a>&nbsp;/&nbsp;<a href="">Каталог</a>&nbsp;/&nbsp;Трусики</nav>
+				{{ function('woocommerce_breadcrumb') }}
 				<div class="all-page-title">
 					<h1>Трусики</h1>
 				</div>
-				<div class="products-filter"></div>
+				<v-app>
+					<div class="products-filter">
+						<div class="products-filter-item">
+							<div class="products-filter-item-name">Цвет</div>
+							<div class="products-filter-item-content" id="combobox-color">
+								<v-select
+									:items="sortItems"
+									label="Сортировка"
+									item-text="label"
+									item-value="value"
+									attach="#combobox-color"
+									solo
+									v-model="sort"
+			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+								></v-select>
+							</div>
+						</div>
+
+						<div class="products-filter-item">
+							<div class="products-filter-item-name">Размер</div>
+							<div class="products-filter-item-content" id="combobox-size">
+								<v-select
+									:items="sortItems"
+									label="Сортировка"
+									item-text="label"
+									item-value="value"
+									attach="#combobox-size"
+									solo
+									v-model="sort"
+			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+								></v-select>
+							</div>
+						</div>
+
+						<div class="products-filter-item">
+							<div class="products-filter-item-name">Посадка</div>
+							<div class="products-filter-item-content" id="combobox-pos">
+								<v-select
+									:items="sortItems"
+									label="Сортировка"
+									item-text="label"
+									item-value="value"
+									attach="#combobox-pos"
+									solo
+									v-model="sort"
+			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+								></v-select>
+							</div>
+						</div>
+
+						<div class="products-filter-item">
+							<div class="products-filter-item-name">Покрой</div>
+							<div class="products-filter-item-content" id="combobox-kr">
+								<v-select
+									:items="sortItems"
+									label="Сортировка"
+									item-text="label"
+									item-value="value"
+									attach="#combobox-kr"
+									solo
+									v-model="sort"
+			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+								></v-select>
+							</div>
+						</div>
+
+						<div class="products-filter-item">
+							<div class="products-filter-item-name">Производитель</div>
+							<div class="products-filter-item-content" id="combobox-manufacture">
+								<v-select
+									:items="sortItems"
+									label="Сортировка"
+									item-text="label"
+									item-value="value"
+									attach="#combobox-manufacture"
+									solo
+									v-model="sort"
+			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+								></v-select>
+							</div>
+						</div>
+					</div>
+				</v-app>
 				<div class="archive-products-content">
 					{% for item in 0..15 %}
-					<a class="products-item-link" href="">
+					<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
 						<div class="products-item-image">
-							<img src="./assets/images/prod-thmb.jpg" alt="">
+							<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
 							<div class="sale-tag">15%</div>
 						</div>
 						<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-						<div class="products-item-price">1300 <img src="./assets/images/rub.png" alt=""></div>
+						<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
 					</a>
 					{% endfor %}
 				</div>

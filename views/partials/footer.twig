@@ -2,8 +2,8 @@
 <div class="footer-content">
 	<div class="container">
 		<div class="main-footer-logo">
-			<a href="">
-				<img src="./assets/images/logo-footer.png" alt="">
+			<a href="{{ site.link }}">
+				<img src="{{ site.theme.link }}/assets/images/logo-footer.png" alt="">
 			</a>
 		</div>
 		<div class="main-footer-info">
@@ -55,12 +55,9 @@
 </div>
 <div class="overlay"></div>
 </footer>
+</div>
 
-
-<script src="./assets/js/vendors/jquery-3.2.0.min.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-<script src="./assets/js/vendors/slick.js"></script>
-<script src="./assets/js/bundle.js"></script>
+{{ function('wp_footer') }}
 </body>
 
 </html>
