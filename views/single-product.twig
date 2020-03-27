@@ -2,44 +2,9 @@
 <main class='main-content'>
 	<div class="archive-product-block">
 		<div class="container">
-			<div class="archive-product-sidebar">
-				<div class="sidebar-menu-item">
-					<div class="sidebar-menu-item-name">Нижнее белье</div>
-					<ul class="sidebar-menu-content">
-						<li><a href="">Бюсгалтеры</a></li>
-						<li class="current-menu-item"><a href="">Трусики</a></li>
-						<li><a href="">Боди, грации, корсеты</a></li>
-						<li><a href="">Корректирующее белье</a></li>
-					</ul>
-				</div>
-				<div class="sidebar-menu-item">
-					<div class="sidebar-menu-item-name">Одежда для сна и отдыха</div>
-					<ul class="sidebar-menu-content">
-						<li><a href="">Пижамы и сорочки</a></li>
-						<li><a href="">Халаты</a></li>
-						<li><a href="">Боди</a></li>
-					</ul>
-				</div>
-				<div class="sidebar-menu-item">
-					<div class="sidebar-menu-item-name">Пляж</div>
-					<ul class="sidebar-menu-content">
-						<li><a href="">Раздельные купальники</a></li>
-						<li><a href="">Слитные купальники</a></li>
-						<li><a href="">Пляжная одежда</a></li>
-					</ul>
-				</div>
-				<div class="sidebar-menu-item">
-					<div class="sidebar-menu-item-name">Аксессуары</div>
-					<ul class="sidebar-menu-content">
-						<li><a href="">Аксессуары для белья</a></li>
-						<li><a href="">Колготки</a></li>
-						<li><a href="">Подвязки</a></li>
-						<li><a href="">Чулки и пояса</a></li>
-					</ul>
-				</div>
-			</div>
+			{% include "partials/sidebar-menu.twig" %}
 			<div class="archive-products-main">
-				<nav class="woocommerce-breadcrumb"><a href="">Главная</a>&nbsp;/&nbsp;<a href="">Каталог</a>&nbsp;/&nbsp;<a href="">Трусики</a>&nbsp;/&nbsp;Трусы 311</nav>
+				{{ function('woocommerce_breadcrumb') }}
 				<div class="all-page-title">
 					<h1>Трусы 311</h1>
 				</div>
@@ -66,14 +31,12 @@
 									<div class="add-to-cart-column">Размер</div>
 									<div class="add-to-cart-column">В наличии</div>
 									<div class="add-to-cart-column">Количество</div>
-									<div class="add-to-cart-column"></div>
 								</div>
 								<div class="add-to-cart-row" v-for="variation in productVariations">
 									<div class="add-to-cart-column">(( variation.value ))</div>
 									<div class="add-to-cart-column">(( variation.label ))</div>
-									<div class="add-to-cart-column">(( variation.stock_quantity ))</div>
-									<div class="add-to-cart-column"><quantity-button class="product-quantity" count='1' :max-count="variation.stock_quantity"></quantity-button></div>
-									<div class="add-to-cart-column"><a class="add-to-cart" href="">В корзину</a></div>
+									<div class="add-to-cart-column">(( variation.stock_quantity ))</div>									
+										<addcart count='1' :max-count="variation.stock_quantity" :product_id="variation.id"></addcart>
 								</div>		
 							</div>
 							{% endif %}

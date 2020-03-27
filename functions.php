@@ -61,7 +61,7 @@ function true_remove_default_widget() {
 	unregister_widget('WP_Nav_Menu_Widget'); 
 }
  
-add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
 
 add_action( 'widgets_init', 'true_remove_default_widget', 20 );
 add_theme_support('post-thumbnails');

@@ -15,6 +15,9 @@
 .main-banner-slick .slick-prev:hover svg path, .main-banner-slick .slick-next:hover svg path {
     fill: #f3a9b8;
 }
+.main-banner-slick .slick-arrow:hover{
+    background-color: #000;
+}
 .main-banner-slick .slick-prev{
     text-align: right;
     padding-right: 13px;

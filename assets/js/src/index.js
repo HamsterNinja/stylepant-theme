@@ -30,6 +30,9 @@ Vue.component('v-zoomer', vuezoomer);
 import QuantityButton from './components/QuantityButton.vue';
 Vue.component('quantity-button', QuantityButton);
 
+import addCart from './components/addCart.vue';
+Vue.component('addcart', addCart);
+
 import numeral from 'numeral';
 numeral.register('locale', 'ru', {
     delimiters: {
