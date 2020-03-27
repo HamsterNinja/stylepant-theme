@@ -167,13 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             },
             async mounted() {
-                //favorites
-                const fetchDataFavorite = SITEDATA.current_user_id;
-                if (fetchDataFavorite == true) {
-                    const responseFavorite = await fetch(`${SITEDATA.url}/wp-json/amadreh/v1/get-favorite?user_id=${fetchDataFavorite}`);
-                    const dataFavorite = await responseFavorite.json();
-                    this.favorites = Object.values(dataFavorite.data);
-                }
                 if (this.is_product) {
                     const requestDataProductVariations = {
                         url: SITEDATA.url + '/wp-json/amadreh/v1/get-variations/?post_parent=' + SITEDATA.product_id,
