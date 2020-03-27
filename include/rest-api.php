@@ -308,8 +308,8 @@ function add_one_product() {
     if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity ) && 'publish' === $product_status ) {
         do_action( 'woocommerce_ajax_added_to_cart', $product_id );
         wc_add_to_cart_message( $product_id );
-        // $fragments = WC_AJAX::get_refreshed_fragments();
-        wp_send_json_success($product_id);
+        $fragments = WC_AJAX::get_refreshed_fragments();
+        wp_send_json_success($fragments);
     } else {
         $data = array(
             'error'       => true,

@@ -6,3 +6,237 @@
     right: -15px;
   }
 }
+@media (max-width: 1025px) {
+  .hidden-menu_block {
+    width: 100%;
+  }
+  .hidden-menu_block.active {
+    transform: translateX(100%);
+    right: 100%;
+    width: 100%;
+    padding: 0 150px 0 105px;
+  }
+}
+@media (max-width: 1020px) {
+  .main-header-menu ul li {
+    margin: 0 12px;
+  }
+  .main-header-menu ul li a {
+    font-size: 13px;
+  }
+  .main-header-left {
+    width: 255px;
+  }
+  .main-header-logo {
+    width: 125px;
+    margin-top: 0;
+  }
+  .main-header-logo:before {
+    top: 60px;
+  }
+  .main-header-phone a {
+    font-size: 0;
+    background-image: url(../images/phone.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 17px;
+    height: 17px;
+  }
+  .main-header-right {
+    width: 255px;
+  }
+  .archive-product-sidebar {
+    display: none;
+  }
+  .archive-products-main {
+    width: 100%;
+  }
+}
+@media (max-width: 770px) {
+  .main-footer-logo {
+    width: auto;
+  }
+  .main-footer-info {
+    width: auto;
+  }
+  .main-footer-menu {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .copyright, .under-footer-link {
+    margin-bottom: 8px;
+  }
+  .main-header-bottom {
+    display: none;
+  }
+  .main-header-logo:before {
+    display: none;
+  }
+  .single-product-top {
+    display: grid;
+    grid-template-columns: 237px calc(100% - 257px);
+    grid-gap: 20px;
+    padding-bottom: 50px;
+  }
+  .add-to-cart-column:last-child {
+    display: block;
+    text-align: center;
+  }
+  .add-card-quantity {
+    margin: 0 auto;
+  }
+  a.add-to-cart {
+    width: calc(100% - 79px);
+  }
+}
+@media (max-width: 740px) {
+  .bottom-subscribe .container-2 {
+    display: block;
+  }
+  .bottom-subscribe-text {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  .bottom-subscribe-form {
+    width: 100%;
+  }
+  .choice-button {
+    font-size: 17px;
+    margin-right: 10px;
+  }
+  .add-to-cart-header {
+    justify-content: space-between;
+  }
+  .add-to-cart-row {
+    justify-content: space-between;
+  }
+  .single-product-top {
+    grid-template-columns: auto;
+  }
+}
+@media (max-width: 700px) {
+  .main-header-top {
+    padding: 10px 0 10px;
+  }
+  .hidden-menu_block.active {
+    padding: 0 15px 0 15px;
+  }
+  .hidden-block-logo {
+    display: none;
+  }
+  .hidden-menu_block-title h2 {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .main-page-categories {
+    grid-template-columns: auto;
+  }
+  .main-header-logo {
+    margin-top: 0;
+    order: -1;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .main-header-logo img {
+    width: 245px;
+  }
+}
+@media (max-width: 540px) {
+  .main-header-left {
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    justify-content: center;
+  }
+  .main-header-right {
+    order: 0;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 14px;
+    justify-content: center;
+  }
+  .btn-hamburger {
+    background: transparent;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 14%;
+    left: 0;
+  }
+  .btn-hamburger.active {
+    position: relative;
+  }
+  .main-banner-slick .slick-prev, .main-banner-slick .slick-next {
+    height: 40px;
+    width: 40px;
+  }
+}
+@media (max-width: 490px) {
+  .add-to-cart-header {
+    grid-template-columns: 65px 50px 74px 87px;
+  }
+  .add-to-cart-row {
+    grid-template-columns: 65px 50px 74px 87px;
+  }
+  a.add-to-cart {
+    width: 100%;
+  }
+}
+@media (max-width: 460px) {
+  .choice-button {
+    font-size: 14px;
+    margin-right: 12px;
+  }
+  .footer-content .container {
+    justify-content: center;
+  }
+  .main-footer-info {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 420px) {
+  .main-page-triggers-title h2 {
+    font-size: 28px;
+  }
+  .bottom-subscribe-text {
+    font-size: 19px;
+  }
+  input.subs-input {
+    width: calc(100% - 102px);
+  }
+  input.subs-submit {
+    padding: 18px 8px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .add-to-cart-header .add-to-cart-column {
+    font-size: 12px;
+    padding: 14px 0;
+  }
+  .add-to-cart-column {
+    font-size: 10px;
+    color: #171717;
+    padding: 7px 0;
+  }
+  .add-to-cart-header {
+    grid-template-columns: 65px 43px 63px 72px;
+  }
+  .add-to-cart-row {
+    grid-template-columns: 65px 43px 63px 72px;
+  }
+  .add-card-quantity {
+    width: 72px;
+    margin-bottom: 3px;
+  }
+  .add-card-quantity button {
+    width: 20px;
+  }
+  .add-card-quantity input {
+    width: 30px;
+  }
+}

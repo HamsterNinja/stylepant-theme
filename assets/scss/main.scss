@@ -234,7 +234,7 @@ a.products-item-link:hover .product-item-name h4 {
 }
 .single-product-top {
     display: grid;
-    grid-template-columns: calc(48% - 20px) calc(52% - 20px);
+    grid-template-columns: calc(100% - 499px) 459px;
     grid-gap: 40px;
     padding-bottom: 50px;
 }

@@ -191,16 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 $(document).ready(function () {
  $('.btn-hamburger').click(function (e) {
-     $(this).toggleClass('active');
      $(this).parent().toggleClass('active');
      $('.hidden-menu_block').toggleClass('active');
      $('.overlay').toggleClass('active');
 
  });
- $('.overlay').click(function (e) {
-     $(this).removeClass('active');
-     $('.btn-hamburger').removeClass('active');
-     $('.btn-hamburger').parent().removeClass('active');
+ $('.overlay,.btn-hamburger.active').click(function (e) {
+     $('.overlay').removeClass('active');
      $('.hidden-menu_block').removeClass('active');
  });
 
@@ -235,6 +232,22 @@ $(document).ready(function () {
         infinite: true,
         dots: false
       }
+    },{
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 420,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
     }
   ]
  });
@@ -261,6 +274,22 @@ $(document).ready(function () {
         infinite: true,
         dots: false
       }
+    },{
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 420,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
     }
   ]
  });
@@ -284,6 +313,22 @@ $(document).ready(function () {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 420,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
         infinite: true,
         dots: false
       }

@@ -52,6 +52,7 @@ button.btn-hamburger p {
     top: 7px;
     transform: rotate(45deg);
     background: #0f1a48;
+    width: 22px;
 }
 
 .btn-hamburger.active span:after {
@@ -82,7 +83,7 @@ button.btn-hamburger p {
     justify-content: flex-start;
     align-items: center;
     max-width: 380px;
-    width: 32%;
+    width: 333px;
 }
 .main-header-whatsapp {
     margin-right: 15px;
@@ -100,7 +101,7 @@ button.btn-hamburger p {
 }
 
 .main-header-logo {
-    width: 35%;
+    width: calc(100% - 666px);
     text-align: center;
     background-color: #fff;
     margin-top: 9px;
@@ -126,7 +127,7 @@ button.btn-hamburger p {
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
-    width: 32%;
+    width: 333px;
     max-width: 380px;
 }
 .main-header-search {

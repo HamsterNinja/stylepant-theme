@@ -26,6 +26,41 @@ export default {
     },
     methods: {
     	async addCart() {
+            // TODO: убрать jquery
+            let targetButton = event.target;
+            var cart = $('.main-header-cart');
+            let imgtodrag = $(event.target).parents('.single-product-top').find(".product-image img").eq(0);
+            if (imgtodrag.length !== 0) {
+                var imgclone = imgtodrag.clone()
+                    .offset({
+                    top: imgtodrag.offset().top,
+                    left: imgtodrag.offset().left
+                })
+                    .css({
+                    'opacity': '0.5',
+                        'position': 'absolute',
+                        'height': 'auto',
+                        'width': '300px',
+                        'z-index': '100',
+                })
+                    .appendTo($('body'))
+                    .animate({
+                        'top': cart.offset().top,
+                        'left': cart.offset().left + 10,
+                        'width': 75,
+                        'height': 75
+                }, 1000);
+
+                
+                imgclone.animate({
+                    'width': 0,
+                        'height': 0
+                }, function () {
+                    $(this).detach()
+                });
+            }
+
+
             this.adding = true;
             let formProduct = new FormData();
             formProduct.append('action', 'add_one_product');
@@ -43,6 +78,7 @@ export default {
             } else if (jsonResponse.success) {
                 // location = SITEDATA.url + "/cart/";
             }
+                console.log(jsonResponse)
             if ( jsonResponse.fragments ) {
                 // TODO: переписать
                 Array.from(jsonResponse.fragments).forEach(element => {
