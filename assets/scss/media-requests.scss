@@ -1,0 +1,10 @@
+@media(max-width: 1340px){
+.products-slick .slick-prev,
+.partners-slick .slick-prev {
+    left: -15px;
+}
+.products-slick .slick-next,
+.partners-slick .slick-next{
+    right: -15px;
+}
+}

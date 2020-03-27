@@ -15,9 +15,6 @@ Vue.component('product-list', ProductList);
 import ProductItem from './components/ProductItem.vue';
 Vue.component('product-item', ProductItem);
 
-import favorite from './components/favorite.vue';
-Vue.component('favorite', favorite);
-
 import ProductFavorite from './components/ProductFavorite.vue';
 Vue.component('product-favorite', ProductFavorite);
 
@@ -92,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     'category_count',
                     'pageNum',
                     'productCount',
-                    'favorites',
                     'max_price_per_product_cat',
                     'min_price_per_product_cat',
                 ]),
@@ -113,10 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 remove(item) {
                     this.chips.splice(this.chips.indexOf(item), 1)
                     this.chips = [...this.chips]
-                },
-                clearFavorites(){
-                    this.$store.commit('clearFavorites');
-                    this.favorite_products = [];
                 },
                 selectPage(pageNum){
                     this.pageNum = pageNum;
@@ -230,9 +222,28 @@ $(document).ready(function () {
   $('.partners-slick').slick({
      infinite: true,
      slidesToShow: 7,
-     slidesToScroll: 1,
+     slidesToScroll: 7,
      arrows: true,
      dots: false,
+     responsive: [
+    {
+      breakpoint: 1340,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 840,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: false
+      }
+    }
+  ]
  });
   $('.products-slick').slick({
      infinite: true,
@@ -240,6 +251,25 @@ $(document).ready(function () {
      slidesToScroll: 5,
      arrows: true,
      dots: false,
+     responsive: [
+    {
+      breakpoint: 1340,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 840,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    }
+  ]
  });
     $('.popular-slick').slick({
      infinite: true,
@@ -247,6 +277,25 @@ $(document).ready(function () {
      slidesToScroll: 4,
      arrows: true,
      dots: false,
+     responsive: [
+    {
+      breakpoint: 1340,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    },{
+      breakpoint: 840,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    }
+  ]
  });
    $('.choice-button').click(function (event) {
      event.preventDefault();

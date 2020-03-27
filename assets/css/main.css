@@ -1055,6 +1055,7 @@ button.button.button--favorites-clear {
 .partners-slick-content a img {
   opacity: 0.5;
   transition: 0.3s ease;
+  margin: 0 auto;
 }
 .partners-slick-content a:hover img {
   opacity: 1;
@@ -1650,4 +1651,12 @@ a.main-footer-info-email:hover {
 }
 .main-footer-menu-item ul li a:hover, .under-footer-link a:hover {
   text-decoration: underline;
+}
+@media (max-width: 1340px) {
+  .products-slick .slick-prev, .partners-slick .slick-prev {
+    left: -15px;
+  }
+  .products-slick .slick-next, .partners-slick .slick-next {
+    right: -15px;
+  }
 }
