@@ -1,4 +1,5 @@
 <?php
+setPostViews(get_the_ID());
 
 if ( ! class_exists( 'Timber' ) ){
     echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
@@ -39,7 +40,9 @@ if ( is_singular( 'product' ) ) {
                 $attribute_object->name = $current_term->name;
             }
         }
+       
         array_push($product_attributes, $attribute_object);       
+       
     }
     $context['product_attributes'] = $product_attributes;
 

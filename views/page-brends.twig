@@ -1,0 +1,20 @@
+{% include "partials/header.twig" %}
+<main class='main-content single'>
+	<div class="page-content page-content--default container">
+        {{ function('woocommerce_breadcrumb') }}
+		<h1 class="default-page-title">{{ post.title }}</h1>
+        <div class="brends-content">
+            {% for item in brends %}
+                <a class="brend-item" href="{{ site.link }}/shop/?filters=proizvoditel[{{item.term_id}}]">
+                    {% if item.логотип %}
+                    <img src="{{ item.логотип }}" alt="">
+                    {% else %}
+                    <img src="{{ site.theme.link }}/assets/images/placeholder-images.webp" alt="">
+                    {% endif %}
+                </a>
+            {% endfor %} 
+        </div>
+    </div>
+	
+</main>
+{% include "partials/footer.twig" %}

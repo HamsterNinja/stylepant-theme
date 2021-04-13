@@ -1,0 +1,10 @@
+<section class="single-product-bottom-slider products-viewed products-viewed--viewed" v-if="viewedProducts.length > 0">
+
+    <div class="single-product-bottom-slider-name">Вы смотрели</div>
+        <transition-group name="products" tag="section" class="viewed-slick">
+            <template v-if="viewedProducts.length > 0" v-for="(product, index) in viewedProducts">
+                <product-item :product="product" class="products-item--viewed" :key='index'></product-item>
+            </template>
+        </transition-group>
+
+</section>

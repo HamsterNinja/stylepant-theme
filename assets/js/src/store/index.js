@@ -16,6 +16,7 @@ const store = new Vuex.Store({
         loadingProducts: false,
         product: {},
         products: [],
+        viewedProducts: [],
         category_count: '',
         category_count_page: 21,
         searchString: SITEDATA.search_query,
@@ -33,7 +34,8 @@ const store = new Vuex.Store({
     },
     plugins: [createPersistedState({
         reducer: state => ({
-            favorites: state.favorites,          
+            favorites: state.favorites,
+            viewedProducts: state.viewedProducts,       
         })
     })],
     getters: {
@@ -50,7 +52,9 @@ const store = new Vuex.Store({
             state.showLoader = false;
             state.products = payload;
         },
-
+        updateViewedProducts(state, value) {
+            state.viewedProducts = value
+        },
         updateCatalogSort: set('catalogSort'),
         updateSearchString: set('searchString'),
         updateCategoryCount: set('category_count'),
@@ -65,7 +69,7 @@ const store = new Vuex.Store({
         updateCatalogWidths: set('catalogWidths'),
         updateCatalogMaterials: set('catalogMaterials'),
         updateFavorites: set('favorites'),
-
+        
         clearFavorites(state) {
             state.favorites = [];
         },  

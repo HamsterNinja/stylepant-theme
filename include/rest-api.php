@@ -76,7 +76,7 @@ function getProducts(WP_REST_Request $request) {
             $price_min = intval($prices[0]);
             $price_max = intval($prices[1]);
             $prices= array(
-                'key' => '_price',
+                'key' => '_regular_price',
                 'value' => array($price_min, $price_max),
                 'compare' => 'BETWEEN',
                 'type' => 'NUMERIC'
@@ -84,9 +84,11 @@ function getProducts(WP_REST_Request $request) {
             array_push($args_variation['meta_query'], $prices); 
         }
 
+
         
         $q = new WP_Query($args_variation);
         $parent_ids = wp_list_pluck( $q->posts, 'post_parent' );
+        
         
         $args = array(
             'post_status' => 'publish',
@@ -108,26 +110,26 @@ function getProducts(WP_REST_Request $request) {
         $args['meta_query'] =  array('relation' => 'AND');
 
 
-        if (isset($current_items_order_by)  && !(empty($current_items_order_by))) {
-            if( $current_items_order_by == 'ASC' || $current_items_order_by == 'DESC' ){
-                $args['orderby'] = 'title'; 
-                $args['order'] = $current_items_order_by;
-            }
-            if( $current_items_order_by == 'price_desc'){
-                $args['orderby'] = 'meta_value_num';
-                $args['order'] = 'DESC';
-                $args['meta_key'] = '_price';
-            }
-            if( $current_items_order_by == 'price_asc'){
-                $args['orderby'] = 'meta_value_num';
-                $args['order'] = 'ASC';
-                $args['meta_key'] = '_price';
-            }
-            if( $current_items_order_by == 'new'){
-                $args['ignore_sticky_posts'] = 1;
-                $args['orderby'] = array('meta_value' => 'ASC', 'date' => 'DESC');
-            }
-        }
+        // if (isset($current_items_order_by)  && !(empty($current_items_order_by))) {
+        //     if( $current_items_order_by == 'ASC' || $current_items_order_by == 'DESC' ){
+        //         $args['orderby'] = 'title'; 
+        //         $args['order'] = $current_items_order_by;
+        //     }
+        //     if( $current_items_order_by == 'price_desc'){
+        //         $args['orderby'] = 'meta_value_num';
+        //         $args['order'] = 'DESC';
+        //         $args['meta_key'] = '_price';
+        //     }
+        //     if( $current_items_order_by == 'price_asc'){
+        //         $args['orderby'] = 'meta_value_num';
+        //         $args['order'] = 'ASC';
+        //         $args['meta_key'] = '_price';
+        //     }
+        //     if( $current_items_order_by == 'new'){
+        //         $args['ignore_sticky_posts'] = 1;
+        //         $args['orderby'] = array('meta_value' => 'ASC', 'date' => 'DESC');
+        //     }
+        // }
 
         if (isset($current_product_cat)  && !(empty($current_product_cat)) && !is_null($current_product_cat) && !($current_product_cat=="null")) {
             $request_params = array(
@@ -169,15 +171,15 @@ function getProducts(WP_REST_Request $request) {
         $result = new WP_Query($args);
         $products = [];
 
-        function price_array($price){
-            $del = array('<span class="woocommerce-Price-amount amount">', '<span class="woocommerce-Price-currencySymbol">' ,'</span>','<del>','<ins>', '&#8381;');
-            $price = str_replace($del, '', $price);
-            $price = str_replace('</del>', '|', $price);
-            $price = str_replace('</ins>', '|', $price);
-            $price_arr = explode('|', $price);
-            $price_arr = array_filter($price_arr);
-            return $price_arr;
-        }
+        // function price_array($price){
+        //     $del = array('<span class="woocommerce-Price-amount amount">', '<span class="woocommerce-Price-currencySymbol">' ,'</span>','<del>','<ins>', '&#8381;');
+        //     $price = str_replace($del, '', $price);
+        //     $price = str_replace('</del>', '|', $price);
+        //     $price = str_replace('</ins>', '|', $price);
+        //     $price_arr = explode('|', $price);
+        //     $price_arr = array_filter($price_arr);
+        //     return $price_arr;
+        // }
 
         foreach ($result->posts as $post) {
             $productInstance = new WC_Product($post->ID);
@@ -273,14 +275,43 @@ function getVariations(WP_REST_Request $request) {
                 $product_variation_object->sale_price = $product_variation->get_sale_price();
 
                 $product_variation_object_value = $product_variation->get_variation_attributes();
-                $product_variation_object->value = $product_variation_object_value['attribute_color'];
-                $product_variation_object->label = $product_variation_object_value['attribute_size']; 
+                $product_variation_object->value = attribute_slug_to_title('attribute_pa_tsvet', $product_variation_object_value['attribute_pa_tsvet']);
+
+                if ($product_variation_object_value['attribute_pa_razmer_1']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer_1'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-1']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-1'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-2']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-2'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-3']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-3'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-4']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-4'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-5']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-5'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-6']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-6'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-7']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-7'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-8']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-8'];
+                }
+                if ($product_variation_object_value['attribute_pa_razmer-9']) {
+                    $product_variation_object->label = $product_variation_object_value['attribute_pa_razmer-9'];
+                }
+ 
                 $product_variation_object->stock_quantity = $product_variation->get_stock_quantity();
 
                 array_push($product_variations, $product_variation_object);
-                
             }
-
             wp_send_json_success( $product_variations, 200 );
         }
         else{
@@ -289,7 +320,7 @@ function getVariations(WP_REST_Request $request) {
     }
     wp_send_json_error('Ошибка при получение избранного');
 }
-
+    
 add_action( 'rest_api_init', function () {
     register_rest_route( 'amadreh/v1/', '/get-variations', array(
           'methods' => WP_REST_Server::READABLE,

@@ -5,7 +5,7 @@
                 <div class="loader"></div>
             </div>
         </transition>
-        <transition-group name="products" tag="section" class="catalog-content-inner" :style="[products.length == 0 ? {marginBottom: '0px'} : {marginBottom: '60px'}]">
+        <transition-group name="products" tag="section" class="archive-products-content" :style="[products.length == 0 ? {marginBottom: '0px'} : {marginBottom: '60px'}]">
             <template v-if="products.length > 0" v-for="(product, index) in products">
                 <product-item :product="product" :class="classItem" :key="index"></product-item>
             </template>

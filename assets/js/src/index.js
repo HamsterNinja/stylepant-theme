@@ -9,6 +9,8 @@ import store from './store';
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
+import viewedProducts from './viewed-products';
+
 import ProductList from './components/ProductList.vue';
 Vue.component('product-list', ProductList);
 
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         { label: 'По возрастанию цены', value: 'price_asc' },
                     ],
                     sort: 'date_desc',
-                    price: [100, 15000],
+                    price: [10, 150000],
                     chips: [],
                     items: SITEDATA.sizes,
                     loading: true,
@@ -103,6 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 uniqueProductVariations(){
                     let array = this.productVariations.filter(variation => variation.label !== 'образец');
                     return array.filter(variation => variation.stock_quantity > 0 );
+                },
+                viewedProducts: {
+                    get() {
+                        return this.$store.state.viewedProducts
+                    },
+                    set(value) {
+                        this.$store.commit('updateViewedProducts', value);
+                    }
                 },
             },
             methods: {
@@ -187,6 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+});
+document.addEventListener('DOMContentLoaded', () => {
+    viewedProducts.init();
 });
 
 $(document).ready(function () {

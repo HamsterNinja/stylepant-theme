@@ -40,7 +40,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     {{function('wp_head')}}
 </head>
 
@@ -74,12 +74,12 @@
      <div class="main-header-bottom">
      	<div class="main-header-menu">
      		<ul>
-     			<li><a href="{{ site.link }}/shop">БРЕНДЫ</a></li>
-     			<li><a href="{{ site.link }}/shop">НИЖНЕЕ БЕЛЬЕ</a></li>
-     			<li><a href="{{ site.link }}/shop">ОДЕЖДА ДЛЯ СНА И ОТДЫХА</a></li>
-     			<li><a href="{{ site.link }}/shop">КУПАЛЬНИКИ</a></li>
-     			<li><a href="{{ site.link }}/shop">АКСЕССУАРЫ</a></li>
-     			<li><a href="{{ site.link }}/shop">ПОДБОР РАЗМЕРА</a></li>
+     			<li><a href="{{ site.link }}/brends/">БРЕНДЫ</a></li>
+     			<li><a href="{{ site.link }}/product-category/nizhnee-bele-2/">НИЖНЕЕ БЕЛЬЕ</a></li>
+     			<li><a href="{{ site.link }}/product-category/dlya-sna-i-otdyha-2/">ОДЕЖДА ДЛЯ СНА И ОТДЫХА</a></li>
+     			<li><a href="{{ site.link }}/product-category/plyazh-2/">ПЛЯЖ</a></li>
+     			<li><a href="{{ site.link }}/product-category/aksessuary/">АКСЕССУАРЫ</a></li>
+     			<li><a href="{{ site.link }}/%d0%bf%d0%be%d0%b4%d0%b1%d0%be%d1%80-%d1%80%d0%b0%d0%b7%d0%bc%d0%b5%d1%80%d0%b0/">ПОДБОР РАЗМЕРА</a></li>
      		</ul>
      	</div>
      </div>
@@ -91,34 +91,24 @@
      			<div class="hidden-block-logo"><a href=""><img src="{{ site.theme.link }}/assets/images/logo.png" alt=""></a></div>
      			<div class="hidden-menu_block-title"><h2>Женская одежда от российского производителя</h2></div>
      		</div>
-			<div class="hidden-menu_block-header-info"><a href="">Войдите</a> или <a href="">зарегистрируйтесь</a>, чтобы получить доступ ко всем фотографиям, размерам и ценам</div>	
+			<div class="hidden-menu_block-header-info"><a href="{{ site.link }}/my-account">Войдите</a> или <a href="{{ site.link }}/my-account">зарегистрируйтесь</a>, чтобы получить доступ ко всем фотографиям, размерам и ценам</div>	
      		</div>
      		<div class="hidden-menu_block-content">
                 <div class="hidden-menu_block-item">
                     <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-                        <li><a href="{{ site.link }}/product-category/produkciya-a-dress/v-l-20/">ВЕСНА-ЛЕТО 2020</a></li>
-                        {% for item in spring_menu.get_items %}
-                        <li itemprop="name" class="{{item.class}}">
-                            <a itemprop="url" href="{{ item.link }}">{{ item.title }}</a>
-                        </li>
-                        {% endfor %}
+                        <li><a href="{{ site.link }}/brends/">БРЕНДЫ</a></li>
+                        <li><a href="{{ site.link }}/product-category/nizhnee-bele-2/">НИЖНЕЕ БЕЛЬЕ</a></li>
+                        <li><a href="{{ site.link }}/product-category/dlya-sna-i-otdyha-2/">ОДЕЖДА ДЛЯ СНА И ОТДЫХА</a></li>
+                        <li><a href="{{ site.link }}/product-category/plyazh-2/">ПЛЯЖ</a></li>
+                        <li><a href="{{ site.link }}/product-category/aksessuary/">АКСЕССУАРЫ</a></li>
+                        <li><a href="{{ site.link }}/%d0%bf%d0%be%d0%b4%d0%b1%d0%be%d1%80-%d1%80%d0%b0%d0%b7%d0%bc%d0%b5%d1%80%d0%b0/">ПОДБОР РАЗМЕРА</a></li>
                     </ul>
                 </div>
      			<div class="hidden-menu_block-item">
-     				<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-                        <li><a href="{{ site.link }}/product-category/produkciya-a-dress/o-z-19-20/">ОСЕНЬ-ЗИМА 19/20</a></li>
-                        {% for item in winter_menu.get_items %}
-                        <li itemprop="name" class="{{item.class}}">
-                            <a itemprop="url" href="{{ item.link }}">{{ item.title }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-     			</div>
-     			<div class="hidden-menu_block-item">
      				<ul>
-          				<li><a href="{{ site.link }}/about-us">О нас</a></li>
+          				<li><a href="{{ site.link }}/%d0%be-%d0%bd%d0%b0%d1%81/">О нас</a></li>
           				<li><a href="{{ site.link }}/contacts">Контакты</a></li>
-          				<li><a href="{{ site.link }}/news">Новости</a></li>
+          				<li><a href="{{ site.link }}/blog">Блог</a></li>
         			</ul>
      			</div>
      		</div>

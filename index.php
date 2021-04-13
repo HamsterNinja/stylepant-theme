@@ -8,4 +8,5 @@ if ( is_home() ) {
 else{
 	Timber::render( $templates, $context );
 }
+
 ?>

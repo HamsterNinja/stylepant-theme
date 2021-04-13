@@ -215,6 +215,11 @@ input.subs-submit {
     padding: 18px 8px;
     font-size: 12px;
 }
+.archive-products-content {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    grid-gap: 44px 20px;
+}
+
 }
 @media(max-width: 380px){
 .add-to-cart-header .add-to-cart-column {
@@ -241,5 +246,15 @@ input.subs-submit {
 }
 .add-card-quantity input {
     width: 30px;
+}
+.contacts-page-items-left {
+    width: 100%;
+}
+}
+
+@media(max-width: 360px){
+.archive-products-content {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-gap: 44px 10px;
 }
 }

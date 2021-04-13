@@ -1,0 +1,12 @@
+{% include "partials/header.twig" %}
+<main class='main-content single'>
+	<div class="news-page page-content page-content--default container">
+	   {{ function('woocommerce_breadcrumb') }}
+
+		<h1 class="default-page-title">{{ post.title }}</h1>
+        {{ post.get_content|shortcodes }}
+
+    </div>
+
+</main>
+{% include "partials/footer.twig" %}

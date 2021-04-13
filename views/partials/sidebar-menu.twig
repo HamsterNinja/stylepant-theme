@@ -1,36 +1,20 @@
 <div class="archive-product-sidebar">
     <div class="sidebar-menu-item">
-        <div class="sidebar-menu-item-name">Нижнее белье</div>
-        <ul class="sidebar-menu-content">
-            <li><a href="{{ site.link }}/shop">Бюсгалтеры</a></li>
-            <li class="current-menu-item"><a href="{{ site.link }}/shop">Трусики</a></li>
-            <li><a href="{{ site.link }}/shop">Боди, грации, корсеты</a></li>
-            <li><a href="{{ site.link }}/shop">Корректирующее белье</a></li>
-        </ul>
-    </div>
-    <div class="sidebar-menu-item">
-        <div class="sidebar-menu-item-name">Одежда для сна и отдыха</div>
-        <ul class="sidebar-menu-content">
-            <li><a href="{{ site.link }}/shop">Пижамы и сорочки</a></li>
-            <li><a href="{{ site.link }}/shop">Халаты</a></li>
-            <li><a href="{{ site.link }}/shop">Боди</a></li>
-        </ul>
-    </div>
-    <div class="sidebar-menu-item">
-        <div class="sidebar-menu-item-name">Пляж</div>
-        <ul class="sidebar-menu-content">
-            <li><a href="{{ site.link }}/shop">Раздельные купальники</a></li>
-            <li><a href="{{ site.link }}/shop">Слитные купальники</a></li>
-            <li><a href="{{ site.link }}/shop">Пляжная одежда</a></li>
-        </ul>
-    </div>
-    <div class="sidebar-menu-item">
-        <div class="sidebar-menu-item-name">Аксессуары</div>
-        <ul class="sidebar-menu-content">
-            <li><a href="{{ site.link }}/shop">Аксессуары для белья</a></li>
-            <li><a href="{{ site.link }}/shop">Колготки</a></li>
-            <li><a href="{{ site.link }}/shop">Подвязки</a></li>
-            <li><a href="{{ site.link }}/shop">Чулки и пояса</a></li>
+        <ul>
+            {% for parent_category in Term(main_categories) %}
+                <li>
+                    <a class="sidebar-menu-item-name" href="{{ parent_category.link }}">{{ parent_category.title }}</a>
+                    {% if parent_category.children %}
+                        <ul class="sidebar-menu-content"> 
+                        {% for category in parent_category.children %}    
+                            <li {% if category.id == term_id and not shop %}class="current-menu-item"{% endif %} data-id="{{ category.id }}">
+                                <a href="{{ category.link }}">{{ category.title }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

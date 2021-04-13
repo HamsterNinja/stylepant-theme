@@ -6,22 +6,50 @@
 			<div class="archive-products-main">
 				{{ function('woocommerce_breadcrumb') }}
 				<div class="all-page-title">
-					<h1>Трусы 311</h1>
+					<h1>{{ post.title }}</h1>
 				</div>
-				<div class="single-product-top">
+				<div class="single-product-top product-for-record" id-product="{{ post.id }}">
 					<div class="product-image">
-						<img data-zoom="{{ site.theme.link }}/assets/images/product.jpg" class="product-gallery__item" src="{{ site.theme.link }}/assets/images/product.jpg" alt="">
+						{% if post.thumbnail %}
+							<img data-zoom="{{ post.thumbnail.src('full') }}" class="product-gallery__item" src="{{ post.thumbnail.src('full') }}" alt="">
+						{% else %}
+							<img class="product-gallery__item" src="{{ site.theme.link }}/assets/images/placeholder-images.webp" alt="">
+						{% endif %}
 					</div>
 					<div class="product-info">
 						<div class="product-info-top">
-							<p>Бренд:  EUROBRA</p>
-							<p>Товар:  ТРУСЫ 311</p>
+							<p>{{ post.preview.length(999).read_more('') }}</p>
 						</div>
+						<div class="product-price">{{ product.get_price_html }}</div>
 						<div class="product-info-middle">
-							<p>Покрой:  Пуш Ап Поролон</p>
-							<p>Страна производитель:  Латвия</p>
-							<p>Производитель:  STEFI-L</p>
-							<p>Вид бретелек:  несъемные</p>
+
+							{% if sku %}
+			            	    <p>Артикул: {{ sku }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_proizvoditel') %}
+			                    <p>Производитель: {{ product.get_attribute('pa_proizvoditel') }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_pokroj') %}
+			                    <p>Покрой: {{ product.get_attribute('pa_pokroj') }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_покрой-3') %}
+			                    <p>Покрой: {{ product.get_attribute('pa_покрой-3') }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_posadka') %}
+			                    <p>Посадка: {{ product.get_attribute('pa_posadka') }}</p>
+			                {% endif %}
+			                {# {% if product.get_attribute('pa_посадка') %}
+			                    <p>Посадка: {{ product.get_attribute('pa_посадка') }}</p>
+			                {% endif %} #}
+			                {% if product.get_attribute('pa_посадка-3') %}
+			                    <p>Посадка: {{ product.get_attribute('pa_посадка-3') }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_vid-bretelek') %}
+			                    <p>Вид бретелек: {{ product.get_attribute('pa_vid-bretelek') }}</p>
+			                {% endif %}
+			                {% if product.get_attribute('pa_вид-бретелек-3') %}
+			                    <p>Вид бретелек: {{ product.get_attribute('pa_вид-бретелек-3') }}</p>
+			                {% endif %}
 						</div>
 						<div class="product-info-bottom">
 							{% if product_variations %}
@@ -43,26 +71,21 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="single-product-bottom">
+				{% if rand_prod %}
 					<div class="single-product-bottom-slider">
 						<div class="single-product-bottom-slider-name">Ещё из коллекции</div>
 						<div class="popular-slick">
-							{% for item in 0..10 %}
+							{% for post in rand_prod %}
 							<div class="popular-slick-content">
-								<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
-									<div class="products-item-image">
-										<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
-										<div class="sale-tag">15%</div>
-									</div>
-									<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-									<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
-								</a>
+								{{ fn('product_render', post) }}
 							</div>
 							{% endfor %}
 						</div>
 					</div>
-					<div class="single-product-bottom-slider">
+				{% endif %}
+					{% include "partials/products-viewed.twig" %}
+					{# <div class="single-product-bottom-slider">
 						<div class="single-product-bottom-slider-name">Вы смотрели</div>
 						<div class="popular-slick">
 							{% for item in 0..10 %}
@@ -78,7 +101,7 @@
 							</div>
 							{% endfor %}
 						</div>
-					</div>
+					</div> #}
 				</div>
 			</div>
 		</div>

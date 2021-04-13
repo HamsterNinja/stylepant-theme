@@ -129,34 +129,41 @@ function get_max_price_per_product_cat( $term_id ) {
 };
 
 // Получение размеров всех товаров
-function getAllSizes() {
-    $args_product_variation = array(
-        'post_type'     => 'product_variation',
-        'post_status'   => array( 'private', 'publish' ),
-        'numberposts'   => -1,
-        'orderby'       => 'menu_order',
-        'order'         => 'ASC',
-    );
-    $product_variations_query = get_posts( $args_product_variation );    
-    $sizes = [];
+// function getAllSizes()
+// {
+//     $args_product_variation = array(
+//         'post_type' => 'product_variation',
+//         'post_status' => array(
+//             'private',
+//             'publish'
+//         ) ,
+//         'numberposts' => - 1,
+//         'orderby' => 'menu_order',
+//         'order' => 'ASC',
+//     );
+//     $product_variations_query = get_posts($args_product_variation);
+//     $sizes = [];
 
-    foreach ( $product_variations_query as $variation ) {
-        $product_variation = new WC_Product_Variation( $variation->ID );
-        $product_variation_object_value = $product_variation->get_variation_attributes();
-        $sizes[] = $product_variation_object_value['attribute_razmer'];
-    }
+//     foreach ($product_variations_query as $variation)
+//     {
+//         $product_variation = new WC_Product_Variation($variation->ID);
+//         $product_variation_object_value = $product_variation->get_variation_attributes();
+//         $sizes[] = $product_variation_object_value['attribute_pa_razmer-5'];
+//     }
 
-    $sizes = array_unique($sizes);
-    $sizes = array_filter($sizes);
-    $sizes = array_values($sizes);
-    return $sizes;
-}
+//     $sizes = array_unique($sizes);
+//     $sizes = array_filter($sizes);
+//     $sizes = array_values($sizes);
+//     return $sizes;
+// }
+
 
 add_action('wp_footer', 'add_scripts');
 function add_scripts() {
     time_enqueuer('jquerylatest', '/assets/js/vendors/jquery-3.2.0.min.js', 'script', true);
     time_enqueuer('slick', '/assets/js/vendors/slick.js', 'script', true);
-    wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper/js/swiper.min.js');
+    wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js');
+     time_enqueuer('app-filter-js', '/assets/js/src/app.js', 'script');
     time_enqueuer('app-main', '/assets/js/main.bundle.js', 'script', true);
     
         $queried_object = get_queried_object();
@@ -193,9 +200,7 @@ function add_scripts() {
     $max_price_per_product_cat = round(get_max_price_per_product_cat($term_id), -3);
 
     //TODO: починить блядоразмеры
-    $sizes_v1 = TimberHelper::transient( 'sizes_v1', function(){
-        return getAllSizes();
-    }, 2600 );
+    // $sizes_v1 = getAllSizes();
   
     wp_localize_script( 'app-main', 'SITEDATA', array(
         'url' => get_site_url(),
@@ -238,7 +243,7 @@ function add_styles() {
         if(is_admin()) return false; 
         wp_enqueue_style( 'materialdesignicons', 'https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css' );
         time_enqueuer('vuitify', '/assets/css/vuitify.css', 'style', false, 'all');    
-        time_enqueuer('main', '/assets/css/main.css', 'style', false, 'all');    
+        time_enqueuer('main', '/assets/css/main.css?v=1.01', 'style', false, 'all');    
         time_enqueuer('mediacss', '/assets/css/media-requests.css', 'style', false, 'all');   
 }
 add_action('wp_print_styles', 'add_styles');
@@ -267,7 +272,73 @@ class StarterSite extends TimberSite {
     
     function add_to_context( $context ) {
         $context['menu_header'] = new TimberMenu('menu_header');      
-        
+
+
+
+        global $product; //Если не объявлен ранее. Не уверен в необходимости.
+
+        $categories = get_the_terms( $post->ID, 'product_cat' );
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 10,
+            'post_parent' => 0,
+            'orderby' => 'rand',
+            'post__not_in' => array(get_the_ID()),
+            'tax_query' => array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'term_id',
+                    'terms' => $categories[0]->term_id,
+                )
+            )   
+        );  
+      $context['rand_prod'] = Timber::get_posts($args);
+      
+      $category = get_queried_object();
+      $context['term_id'] = $category->term_id;
+
+
+      $context['shop'] = $_SERVER['REQUEST_URI'] == '/shop/';
+
+
+      $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 10,
+            'orderby' => 'date',
+            'order' => 'DESC',
+
+        );  
+      $context['new_prod'] = Timber::get_posts($args);
+
+      $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 10,
+            'meta_key' => 'post_views_count',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC',
+
+        );  
+      $context['popular_prod'] = Timber::get_posts($args);
+
+      $main_categories = get_terms( array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => true,
+            'exclude' => array(15),
+            'parent' => 0,
+        ) );
+        $context['main_categories'] = $main_categories;
+
+
+        $pa_args = Timber::get_terms( array(
+                'taxonomy' => 'pa_proizvoditel',
+                'hide_empty' => false,
+            )
+         );
+        $context['brends'] = $pa_args;
+
+        $context['brend_logo'] = get_field('логотип', $pa_args);
+
 		return $context;
 	}
 }
@@ -288,6 +359,48 @@ function wps_deregister_styles() {
     wp_dequeue_style( 'wp-block-library' );
 }
 add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+
+
+// Adds a custom rule type.
+add_filter( 'acf/location/rule_types', function( $choices ){
+    $choices[ __("Other",'acf') ]['wc_prod_attr'] = 'WC Product Attribute';
+    return $choices;
+} );
+
+// Adds custom rule values.
+add_filter( 'acf/location/rule_values/wc_prod_attr', function( $choices ){
+    foreach ( wc_get_attribute_taxonomies() as $attr ) {
+        $pa_name = wc_attribute_taxonomy_name( $attr->attribute_name );
+        $choices[ $pa_name ] = $attr->attribute_label;
+    }
+    return $choices;
+} );
+
+// Matching the custom rule.
+add_filter( 'acf/location/rule_match/wc_prod_attr', function( $match, $rule, $options ){
+    if ( isset( $options['taxonomy'] ) ) {
+        if ( '==' === $rule['operator'] ) {
+            $match = $rule['value'] === $options['taxonomy'];
+        } elseif ( '!=' === $rule['operator'] ) {
+            $match = $rule['value'] !== $options['taxonomy'];
+        }
+    }
+    return $match;
+}, 10, 3 );
+
+
+function setPostViews($postID) {
+    $countKey = 'post_views_count';
+    $count = get_post_meta($postID, $countKey, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $countKey);
+        add_post_meta($postID, $countKey, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $countKey, $count);
+    }
+}
 
 
 include_once(get_template_directory() .'/include/acf-fields.php');

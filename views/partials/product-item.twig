@@ -1,0 +1,23 @@
+<a class="products-item-link" href="{{ link }}">
+	<div class="products-item-image">
+		{% if thumbnail %}
+			<img src="{{ thumbnail }}" alt="">
+		{% else %}
+			<img class="product-gallery__item" src="{{ sitethemelink }}/assets/images/placeholder-images.webp" alt="">
+		{% endif %}
+		{# <div class="sale-tag">15%</div> #}
+	</div>
+	<div class="product-item-name"><h4>{{ title }}</h4></div>
+	<div class="products-item-price">
+		{% if prices[1] %}
+            {% if prices[0] %}
+                <div class="catalog_old-price">{{ prices[0] }} </div>
+            {% endif %} 
+            <div class="catalog_current-price catalog_current-price--sale">{{ prices[1] }} </div>        
+        {% else %}
+            {% if prices[0] %}
+                <div class="catalog_current-price">{{ prices[0] }} </div> 
+            {% endif %} 
+        {% endif %}               
+	</div>
+</a>

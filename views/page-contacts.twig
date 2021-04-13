@@ -1,0 +1,42 @@
+{% include "partials/header.twig" %}
+<main class='main-content single'>
+	<div class="page-contact container">
+	{{ function('woocommerce_breadcrumb') }}
+		<h1 class="default-page-title">{{ post.title }}</h1>
+        <div class="contacts-page-block">
+            <div class="contacts-page-content">
+                <div class="contacts-page-content-inner visible" id="c1">
+                    <div class="contacts-page-items">
+                        <div class="contacts-page-items-left">
+                            <div class="contacts-page-item">
+                                <div class="contacts-page-item-name">Адрес:</div>
+                                <div class="contacts-page-item-address"><span>г.Москва, ул. Ленина, д.2</span></div>
+                            </div>
+                            <div class="contacts-page-item">
+                                <div class="contacts-page-item-name">Телефон:</div>
+                                <div class="contacts-page-phone"><a href="tel:+7 (495) 633-72-90">+7 (495) 633-72-90</a></div>
+                            </div>
+                            <div class="contacts-page-item">
+                                <div class="contacts-page-item-name">E-mail:</div>
+                                <div class="contacts-page-email"><a href="mailto:info@mail.ru">info@mail.ru</a></div>
+                            </div>
+                        </div>
+                        <div class="contacts-page-items-right">
+                            <div class="contacts-page-item">
+                                <div class="contacts-page-item-name">График работы</div>
+                                <p><b>Пн - Пт:</b> с 10:00 до 19:00</p>
+                                <p><b>Суббота:</b> с 12.00 до 18.00</p>
+                                <p><b>Воскресенье:</b> Выходной</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contacts-page-map">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa2230ec97f316694dba00a6b1fa00f130c67d756f7ed711c34f999ae750ef193&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</main>
+{% include "partials/footer.twig" %}

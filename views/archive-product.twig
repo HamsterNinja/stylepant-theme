@@ -6,104 +6,157 @@
 			<div class="archive-products-main">
 				{{ function('woocommerce_breadcrumb') }}
 				<div class="all-page-title">
-					<h1>Трусики</h1>
+					<h1>{{ post.title }}</h1>
 				</div>
-				<v-app>
-					<div class="products-filter">
+				<div class="products-filter">
+				<div class="products-filter-item">
+					
+					{{ function('do_shortcode', '[br_filter_single filter_id=29792]') }}
+				</div>
+				<div class="products-filter-item">
+					<div class="products-filter-item-name">Размер</div>
+					{{ function('do_shortcode', '[br_filter_single filter_id=31588]') }}
+				</div>
+				<div class="products-filter-item">
+					<div class="products-filter-item-name">Бренд</div>
+					{{ function('do_shortcode', '[br_filter_single filter_id=31590]') }}
+				</div>
+				<div class="products-filter-item">
+					<div class="products-filter-item-name">Сортировка</div>
+					{% do action('woocommerce_before_shop_loop') %}
+
+				</div>
+				{# <v-app>
 						<div class="products-filter-item">
-							<div class="products-filter-item-name">Цвет</div>
-							<div class="products-filter-item-content" id="combobox-color">
+							<div class="products-filter-item-name">Сортировка</div>
+							<div class="products-filter-item-content" id="sort-block">
 								<v-select
 									:items="sortItems"
 									label="Сортировка"
 									item-text="label"
 									item-value="value"
-									attach="#combobox-color"
+									attach="#sort-block"
 									solo
 									v-model="sort"
-			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
+									v-on:change="applyFilter('catalogSort', $event)"
 								></v-select>
 							</div>
 						</div>
+					</v-app> #}
+				</div>
 
-						<div class="products-filter-item">
-							<div class="products-filter-item-name">Размер</div>
-							<div class="products-filter-item-content" id="combobox-size">
-								<v-select
-									:items="sortItems"
-									label="Сортировка"
-									item-text="label"
-									item-value="value"
-									attach="#combobox-size"
-									solo
-									v-model="sort"
-			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
-								></v-select>
-							</div>
-						</div>
+				{# <v-app>
+		
+				
+				<div class="products-filter">
 
-						<div class="products-filter-item">
-							<div class="products-filter-item-name">Посадка</div>
-							<div class="products-filter-item-content" id="combobox-pos">
-								<v-select
-									:items="sortItems"
-									label="Сортировка"
-									item-text="label"
-									item-value="value"
-									attach="#combobox-pos"
-									solo
-									v-model="sort"
-			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
-								></v-select>
-							</div>
-						</div>
-
-						<div class="products-filter-item">
-							<div class="products-filter-item-name">Покрой</div>
-							<div class="products-filter-item-content" id="combobox-kr">
-								<v-select
-									:items="sortItems"
-									label="Сортировка"
-									item-text="label"
-									item-value="value"
-									attach="#combobox-kr"
-									solo
-									v-model="sort"
-			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
-								></v-select>
-							</div>
-						</div>
-
-						<div class="products-filter-item">
-							<div class="products-filter-item-name">Производитель</div>
-							<div class="products-filter-item-content" id="combobox-manufacture">
-								<v-select
-									:items="sortItems"
-									label="Сортировка"
-									item-text="label"
-									item-value="value"
-									attach="#combobox-manufacture"
-									solo
-									v-model="sort"
-			{# 						v-on:change="applyFilter('catalogSort', $event)" #}
-								></v-select>
+					<div class="products-filter-item">
+						<div class="products-filter-item-name">Цена</div>
+						<div class="products-filter-item-content">
+							<v-range-slider
+							v-model="price"
+							v-on:change="applyFilter('catalogPrices', $event)"
+							min="10"
+							max="150000"
+							color="#01625b"
+							track-color="#e8e3e9"
+							thumb-color="#000"
+							></v-range-slider>
+							<div class="slider-values">
+								<div class="slider-value">от (( price[0] ))</div>
+								<div class="slider-value">до (( price[1] ))</div>
 							</div>
 						</div>
 					</div>
-				</v-app>
-				<div class="archive-products-content">
-					{% for item in 0..15 %}
-					<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
-						<div class="products-item-image">
-							<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
-							<div class="sale-tag">15%</div>
+					<div class="products-filter-item">
+						<div class="products-filter-item-name">Размер</div>
+						<div class="products-filter-item-content" id="size-combobox">
+							<v-combobox
+								v-model="chips"
+								:items="items"
+								multiple
+								small-chips
+								attach="#size-combobox"
+								v-on:change="applyFilter('catalogSizes', $event)"
+								>
+									<template v-slot:selection="{ attrs, item, select, selected }">
+										<v-chip
+										label
+										v-bind="attrs"
+										color="#01625b"
+      									text-color="white"
+										:input-value="selected"
+										close
+										close-icon="mdi-close"
+										@click="select"
+										@click:close="remove(item)"
+										>
+										<span>(( item ))</span>
+										</v-chip>
+									</template>
+							</v-combobox>
 						</div>
-						<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-						<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
-					</a>
-					{% endfor %}
+					</div>
+
+					<div class="products-filter-item">
+						<div class="products-filter-item-name">Сортировка</div>
+						<div class="products-filter-item-content" id="sort-block">
+							<v-select
+								:items="sortItems"
+								label="Сортировка"
+								item-text="label"
+								item-value="value"
+								attach="#sort-block"
+								solo
+								v-model="sort"
+								v-on:change="applyFilter('catalogSort', $event)"
+							></v-select>
+						</div>
+					</div>
+
+					<div class="products-filter-item">
+						<div class="products-filter-item-name">Состав</div>
+						<div class="products-filter-item-content" id="sostav-block">
+							<v-select
+								:items="materialItems"
+								label="Состав"
+								item-text="label"
+								item-value="value"
+								attach="#sostav-block"
+								solo
+								v-model="material"
+								v-on:change="applyFilter('catalogSort', $event)"
+							></v-select>
+						</div>
+					</div>
+
 				</div>
-			</div>
+				</v-app> #}
+				<div class="archive-products-content">
+					{% if posts is not empty  %}
+					{% for post in posts %}
+	                        {{ fn('product_render', post) }}
+						{% endfor %}
+					{% else %}
+						<div class="not-content" style="padding-top: 50px; text-align: center;">Категория пуста</div>
+					{% endif %}
+				</div>
+				{% include 'partials/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+				{# <product-list></product-list>
+				<paginate 
+            v-if="category_count_page > 1" 
+            ref="paginate2" 
+			:page-count="category_count_page" 
+			:click-handler="selectPage" 
+			:page-class="'pagination__pg-num'"
+			:hide-prev-next="true"
+			:prev-text="`<span><svg width='9' height='20' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+			<path d='M7.09305 14.8313C7.2884 15.0267 7.53259 15.1244 7.80119 15.1244C8.04538 15.1244 8.31398 15.0267 8.50933 14.8313C8.90003 14.4406 8.90003 13.8057 8.50933 13.4151L2.77096 7.67668L8.50933 1.93831C8.90003 1.54761 8.90003 0.912725 8.50933 0.522027C8.11863 0.131329 7.48375 0.131329 7.09305 0.522027L0.646538 6.96854C0.451189 7.16389 0.353516 7.40807 0.353516 7.67668C0.353516 7.94528 0.451189 8.18947 0.646538 8.38482L7.09305 14.8313Z' fill='#333333'/></svg></span>`" 
+			:next-text="`<span><svg width='9' height='20' viewBox='0 0 10 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+			<path d='M0.978082 14.8318C1.17343 15.0272 1.41762 15.1248 1.68622 15.1248C1.93041 15.1248 2.19901 15.0272 2.39436 14.8318L8.84087 8.38531C9.03622 8.18996 9.13389 7.94577 9.13389 7.67717C9.13389 7.40856 9.03622 7.16438 8.84087 6.96903L2.39436 0.522515C2.00366 0.131818 1.36878 0.131818 0.978082 0.522515C0.587384 0.913213 0.587384 1.5481 0.978082 1.93879L6.71645 7.67717L0.978082 13.4155C0.587384 13.8062 0.587384 14.4411 0.978082 14.8318Z' fill='#333333'/>
+			</svg></span>`"
+			:container-class="'pagination list'">
+			</div> #}
 		</div>
 	</div>
 </main>

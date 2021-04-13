@@ -1,4 +1,5 @@
 {% include "partials/header.twig" %}
+
 <main class='main-content' id="app">
 <div class="main-page-slider">
 	<div class="main-banner-slick">
@@ -10,22 +11,28 @@
 	</div>
 </div>
 <div class="main-page-categories">
-	<a class="cat-link" href="{{ site.link }}/shop" style="background-color: #94d6cd; background-image: url({{ site.theme.link }}/assets/images/cat-1.jpg);">
-		<div class="hidden-link">Корсеты</div>
+	<a class="cat-link" href="{{ site.link }}/product-category/nizhnee-bele-2/byustgalter-2/" style="background-color: #94d6cd; background-image: url({{ site.theme.link }}/assets/images/cat-1.jpg);">
+		<div class="hidden-link">Бюстгалтеры</div>
 	</a>
-	<a class="cat-link" href="{{ site.link }}/shop" style="background-color: #f3a9b8; background-image: url({{ site.theme.link }}/assets/images/cat-2.jpg);">
-		<div class="hidden-link">Корсеты</div>
+	<a class="cat-link" href="{{ site.link }}/product-category/nizhnee-bele-2/trusy-2/" style="background-color: #f3a9b8; background-image: url({{ site.theme.link }}/assets/images/cat-2.jpg);">
+		<div class="hidden-link">Трусы</div>
 	</a>
-	<a class="cat-link" href="{{ site.link }}/shop" style="background-color: #272435; background-image: url({{ site.theme.link }}/assets/images/cat-3.jpg);">
+	<a class="cat-link" href="{{ site.link }}/product-category/nizhnee-bele-2/bodi-graczii-korsety-2/korset-2/" style="background-color: #272435; background-image: url({{ site.theme.link }}/assets/images/cat-3.jpg);">
 		<div class="hidden-link">Корсеты</div>
 	</a>
 </div>
 <div class="partners-slider">
 	<div class="container">
 		<div class="partners-slick">
-			{% for item in 0..10 %}
+			{% for item in brends %}
 			<div class="partners-slick-content">
-				<a href=""><img src="{{ site.theme.link }}/assets/images/partner.jpg" alt=""></a>
+				<a href="{{ site.link }}/shop/?filters=proizvoditel[{{item.term_id}}]">
+					{% if item.логотип %}
+					<img src="{{ item.логотип }}" alt="">
+					{% else %}
+					<img src="{{ site.theme.link }}/assets/images/placeholder-images.webp" alt="">
+					{% endif %}
+				</a>
 			</div>
 			{% endfor %}
 		</div>
@@ -40,32 +47,19 @@
 		<div class="main-page-products-content">
 			<div class="main-page-products-content-inner visible" id="p1">
 				<div class="products-slick">
-					{% for item in 0..10 %}
+					{% for post in new_prod %}
 					<div class="products-slick-content">
-						<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
-							<div class="products-item-image">
-								<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
-								<div class="sale-tag">15%</div>
-							</div>
-							<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-							<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
-						</a>
+						{{ fn('product_render', post) }}
 					</div>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="main-page-products-content-inner" id="p2">
 				<div class="products-slick">
-					{% for item in 0..10 %}
+					{% for post in popular_prod %}
+
 					<div class="products-slick-content">
-						<a class="products-item-link" href="{{ site.link }}/product/%d1%82%d0%be%d0%b2%d0%b0%d1%80/">
-							<div class="products-item-image">
-								<img src="{{ site.theme.link }}/assets/images/prod-thmb.jpg" alt="">
-								<div class="sale-tag">15%</div>
-							</div>
-							<div class="product-item-name"><h4>EUROBRA - ТРУСЫ 311</h4></div>
-							<div class="products-item-price">1300 <img src="{{ site.theme.link }}/assets/images/rub.png" alt=""></div>
-						</a>
+						{{ fn('product_render', post) }}
 					</div>
 					{% endfor %}
 				</div>
